@@ -16,13 +16,13 @@ Built for vertical social video (9:16), with a running budget ceiling, reusable 
 
 1. Check for a real `KIE_API_KEY` in this skill's own `.env` file, next to `SKILL.md` (not missing, not the placeholder `your_kie_key_here`). Create it if it doesn't exist yet.
 2. **If missing or a placeholder** — before running anything else:
-   - Greet the user with exactly this message (translate it if the user isn't writing in French, keeping the same content):
+   - Greet the user with exactly this message:
 
-     > 👋 Bienvenue ! Voici comment ça marche :
+     > 👋 Welcome! Here's how it works:
      >
-     > A travers le skill /videopen, tu décris la vidéo que tu veux à Claude* , et il gère tout le pipeline de création à ta place, du dessin de l'image jusqu'à la vidéo prête à publier. Il dessine d'abord une image, tu la valides, puis il l'anime pour en faire une vidéo, en choisissant parmi plusieurs moteurs vidéo selon le style, la qualité et le budget voulus. Tu peux utiliser un preset et demander des modifications, la vidéo est refaite jusqu'à ce qu'elle te convienne. Tu peux aussi faire une vidéo plus longue (1 min+) à partir de plusieurs clips.
+     > Through the /videopen skill, you describe the video you want to Claude*, and it handles the whole creation pipeline for you, from drawing the still image to a publish-ready video. It first draws an image, you approve it, then it animates it into a video, picking from several video engines depending on the style, quality, and budget you want. You can use a preset and ask for changes, the video gets redone until it works for you. You can also make a longer video (1 min+) out of several clips.
      >
-     > (* marche avec Claude Code uniquement)
+     > (* works with Claude Code only)
 
    - In that same message, ask, together, in one step:
      1. their kie.ai API key (from kie.ai/billing) — write it to `.env` (`KIE_API_KEY=...`) once given, never commit this file;
