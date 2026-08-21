@@ -44,7 +44,7 @@ Authorization: Bearer {KIE_API_KEY}
 
 ### Hosting the still (important)
 
-Do NOT pass the temporary `tempfile.aiquickdraw.com` PNG link from the draft step — kie.ai re-hosts it and it can come back as an unsupported format (`400: Input material format is unsupported`). Instead host a durable **JPEG**: convert with `sips -s format jpeg`, upload via Blotato's presigned URL (image host only, not publishing), and pass that `publicUrl` as `first_frame_url`.
+The skill currently passes the temporary `tempfile.aiquickdraw.com` PNG link from the draft step through as-is — no automated re-host happens. If kie.ai returns `400: Input material format is unsupported`, convert the still to JPEG manually (`sips -s format jpeg`), upload it durably (e.g. Blotato's presigned URL — hosting only, not publishing), and pass that `publicUrl` as `first_frame_url`. This fallback isn't wired into `draft-image.sh`/`animate.sh` yet.
 
 ## Check remaining credits (no spend)
 
@@ -54,6 +54,7 @@ Do NOT pass the temporary `tempfile.aiquickdraw.com` PNG link from the draft ste
 
 Before submitting, compute and quote:
 - credits = credits_per_second x duration, at kie's live 1080p rate (verify at request time).
+- `animate.sh` reads the per-second rate from the `SEEDANCE25_CPS` env var (set it in `.env` from kie's live pricing) — required for this model, there is no built-in default and the script stops without it.
 - dollars at $5 per 1,000 credits.
 Wait for explicit approval. One approval equals one run.
 

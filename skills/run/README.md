@@ -5,7 +5,7 @@ A Claude skill that makes faceless video content cheaply: draft a still on a che
 ## Install
 
 1. Drop the `run/` folder into `.claude/skills/` in your Claude Code workspace.
-2. Copy `.env.example` to `.env` and paste your kie.ai key (from kie.ai/api-key). fal.ai and WaveSpeed keys are optional fallbacks. Optionally set `GENERATIONS_DIR`; it defaults to `~/faceless/generations`.
+2. Copy `.env.example` to `.env` and paste your kie.ai key (from kie.ai/api-key) — it's the only key this skill actually uses today. fal.ai and WaveSpeed keys are provisioned for a possible future fallback, not currently wired (see "Models wired" below). Optionally set `GENERATIONS_DIR`; it defaults to `~/faceless/generations`.
 3. Start Claude Code and type `/videopen:run` or "make me a POV clip."
 
 ## How it works
@@ -30,5 +30,6 @@ A Claude skill that makes faceless video content cheaply: draft a still on a che
 ## Models wired
 
 - Image: nano-banana-2 (default), gpt-image-2-text-to-image (text and UI)
-- Video: bytedance/v1-pro-image-to-video (cheapest default, 5s/10s only), bytedance/v1-lite-image-to-video (budget), bytedance/seedance-2-5 (any duration), wan/2-6-image-to-video (alternate look / fallback) — all open to pick from, not gated behind an explicit ask.
-- Add fal.ai or WaveSpeed recipes later if you want more models or a provider backup. Other kie.ai video models (Veo, Kling, Sora...) aren't wired yet — add a recipe file under `models/` once their request schema is confirmed from kie.ai's docs.
+- Video (actually callable today — `animate.sh` only recognizes these): bytedance/v1-pro-image-to-video (cheapest default, 5s/10s only), bytedance/v1-lite-image-to-video (budget), bytedance/seedance-2-5 (any duration, needs `SEEDANCE25_CPS` set in `.env`).
+- Wan 2.6, Veo 3.1, and Kling have verified request recipes under `models/`, but no branch in `animate.sh` yet — calling one today fails. Wiring one in is adding a case branch to `animate.sh` plus its request/poll shape from the recipe file.
+- fal.ai/WaveSpeed keys are provisioned in `.env.example` for a possible future provider fallback, but nothing calls either provider yet.

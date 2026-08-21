@@ -54,7 +54,7 @@ Ready-to-use presets to keep a consistent style across a whole series: `pov`, `b
 
 - **Prompt construction.** Your description isn't forwarded to kie.ai as-is — the skill asks a compact style question plus an optional detail round, then builds a proper image prompt from your description and picks. See "How it works" above.
 - **Image → video.** A still is generated first (cheap), approved by you, then animated — never the reverse.
-- **Multiple video engines** (Seedance, Wan, Veo, Kling), with different durations and price points. Defaults to the most cost-efficient option, but asks when style, quality, or runtime calls for a real choice.
+- **Multiple Seedance video tiers** (Pro, Lite, 2.5), with different durations and price points — the ones actually callable today. Defaults to the most cost-efficient option, but asks when quality, budget, or runtime calls for a real choice. Wan, Veo, and Kling have request recipes ready under `skills/run/models/` but aren't wired into the animate step yet.
 - **Reusable presets** to keep visual branding consistent across a series (character, style, app watermark, etc.) — see the list above.
 - **Budget control:** session and monthly spending caps, with a full cost ledger. Cost is always quoted and confirmed before any spend.
 - **Automated quality checks** before paying for animation (framing, vertical aspect ratio, resolution, preset consistency) so you never spend credits animating a flawed still.

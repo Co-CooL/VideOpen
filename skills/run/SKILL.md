@@ -47,22 +47,20 @@ Picking a model is never mandatory beyond the quick question above: "automatic" 
 | Video (cheapest default) | Seedance 1.0 Pro `bytedance/v1-pro-image-to-video` | kie.ai | models/seedance-1-0-pro-image-to-video.md |
 | Video (budget) | Seedance 1.0 Lite `bytedance/v1-lite-image-to-video` | kie.ai | models/seedance-1-0-lite-image-to-video.md |
 | Video (newer, other durations) | Seedance 2.5 `bytedance/seedance-2-5` | kie.ai | models/seedance-2-5-image-to-video.md |
-| Video (alternate look / fallback) | Wan 2.6 `wan/2-6-image-to-video` | kie.ai | models/wan-2-6-image-to-video.md |
-| Video (higher quality, pricier) | Veo 3.1 `veo3`/`veo3_fast`/`veo3_lite` | kie.ai | models/veo3-image-to-video.md — verified against docs.kie.ai |
-| Video (another look, several tiers) | Kling `kling-2.6/image-to-video` (or a version-pinned variant) | kie.ai | models/kling-image-to-video.md — verified against docs.kie.ai (9:16 support unconfirmed, see recipe) |
+| Video (alternate look — recipe only, not yet wired into animate.sh) | Wan 2.6 `wan/2-6-image-to-video` | kie.ai | models/wan-2-6-image-to-video.md |
+| Video (higher quality, pricier — recipe only, not yet wired into animate.sh) | Veo 3.1 `veo3`/`veo3_fast`/`veo3_lite` | kie.ai | models/veo3-image-to-video.md — verified against docs.kie.ai |
+| Video (another look, several tiers — recipe only, not yet wired into animate.sh) | Kling `kling-2.6/image-to-video` (or a version-pinned variant) | kie.ai | models/kling-image-to-video.md — verified against docs.kie.ai (9:16 support unconfirmed, see recipe) |
 
 Read the recipe file before every generation. Use gpt-image-2-text-to-image whenever the frame has readable text, a sign, a poster, or an app UI mockup. Use nano-banana-2 for everything else.
 
-**Video model routing — every wired model is open to use, nothing gated behind "ask first." When there's a real choice to make (style, quality tier, cost), ask which one I want rather than picking silently.** Default every standard short vertical clip to **Seedance 1.0 Pro** (cheapest per second at 1080p) unless the request implies otherwise. Switch models when it calls for it:
-- Need a duration Seedance 1.0 doesn't offer (anything but 5s/10s) → pick the model whose range actually covers it (see Duration below), don't guess.
-- Want a different visual style/motion feel, or Seedance is unavailable → **Wan 2.6**, or **Kling** for another look/tier.
-- Want higher perceived quality and are fine paying more → **Veo 3.1** (pricier per clip — quote the cost clearly, it's a bigger jump than the others).
+**Video model routing — today only Seedance 1.0 Pro, Seedance 1.0 Lite, and Seedance 2.5 are actually callable: `animate.sh`'s model routing only recognizes `pro`, `lite`, and `2.5`.** Nothing among these three is gated behind "ask first." Default every standard short vertical clip to **Seedance 1.0 Pro** (cheapest per second at 1080p) unless the request implies otherwise. Switch between these three when it calls for it:
+- Need a duration Seedance 1.0 doesn't offer (anything but 5s/10s) → **Seedance 2.5** (its range covers up to ~30s).
 - Explicit budget mode → **Seedance 1.0 Lite**.
 - Not sure what fits → ask me, don't guess.
 
-Say which model was picked and why whenever it isn't the default. Other kie.ai video models beyond the six above (Sora, additional Kling tiers, etc.) aren't wired into this skill yet — no verified request recipe exists for them here, so don't guess at their API shape. Ask before spending on one; adding a new recipe file under `models/` first is quick once the exact request schema is confirmed from kie.ai's docs.
+Say which model was picked and why whenever it isn't the default. **Wan 2.6, Veo 3.1, and Kling have verified request recipes under `models/`, but `animate.sh` has no code path for any of them yet — calling one today fails with "unknown model key."** If a request specifically calls for one of these (different visual style, higher perceived quality, another look/tier), say so plainly rather than silently routing to it, and offer to wire it into `animate.sh` first rather than attempting the call. Other kie.ai video models beyond these six (Sora, additional Kling tiers, etc.) have no recipe at all here — don't guess at their API shape. Ask before spending on one; adding a new recipe file under `models/` first is quick once the exact request schema is confirmed from kie.ai's docs, but it still needs a matching branch added to `animate.sh` before it's actually usable.
 
-**Duration — per-model ranges (confirm the model covers the request before picking it):**
+**Duration — per-model ranges (Seedance ranges apply to what's callable today; Veo/Kling/Wan ranges are documented for once they're wired into `animate.sh`):**
 - Seedance 1.0 (Pro/Lite): **5 or 10s only**.
 - Veo 3.1: **4, 6, or 8s only**.
 - Kling: **5 or 10s** (base model), **3-15s** (turbo variant).
@@ -79,9 +77,7 @@ If the requested duration doesn't fit any single model's range, say so plainly r
 
 ## Provider routing
 
-1. Default to the LOWEST COST provider that runs the model well. kie.ai first.
-2. If the cheapest route lacks the model, fails auth, or errors, fall back to fal.ai, then WaveSpeed AI.
-3. Never hide a provider swap. Say which route ran and why.
+kie.ai is the only provider this skill actually calls — every script (`draft-image.sh`, `animate.sh`, `balance.sh`) talks to kie.ai's API directly, and there is no recipe or code path for any other provider. `.env.example` provisions `FAL_KEY`/`WAVESPEED_API_KEY` as optional keys for a future fal.ai/WaveSpeed fallback, but nothing here implements it yet. If kie.ai fails and a fallback is actually needed, say so plainly rather than silently attempting one — there's nothing wired to fall back to.
 
 ## Presets (channel consistency)
 
@@ -198,7 +194,8 @@ Then hand off to publishing:
 
 1 credit = half a cent. $5 buys 1,000 credits.
 
-- Still on GPT Image: 10 credits (~$0.05).
+- Still on nano-banana-2 (DEFAULT image model): about 8 credits (~$0.04).
+- Still on GPT Image (text/UI in frame): 10 credits (~$0.05).
 - **Seedance 1.0 Pro (DEFAULT), 1080p: 14 credits/sec.** 5s = 70 credits (~$0.35), 10s = 140 credits (~$0.70).
 - **Seedance 1.0 Lite (budget), 1080p: 10 credits/sec.** 5s = 50 credits (~$0.25), 10s = 100 credits (~$0.50).
 - **Finished 10s 1080p Pro clip = still + video = 10 + 140 = 150 credits (~$0.75).** Lite = 10 + 100 = 110 credits (~$0.55).

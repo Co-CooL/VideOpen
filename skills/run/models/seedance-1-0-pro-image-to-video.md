@@ -38,7 +38,7 @@ POST https://api.kie.ai/api/v1/jobs/createTask  ·  Auth: `Authorization: Bearer
 
 ## Hosting the still
 
-Do NOT pass the temporary kie draft PNG link (it gets re-hosted and can return unsupported). Convert to JPEG (`sips -s format jpeg`) and host durably (Blotato presigned upload — hosting only, not publishing); pass that public URL as `image_url`.
+The skill currently passes kie's own draft-result URL through as-is — no JPEG conversion or re-host happens automatically. If this returns `400: Input material format is unsupported`, convert the still to JPEG manually (`sips -s format jpeg`) and re-host it (e.g. Blotato's presigned upload — hosting only, not publishing) before passing that URL as `image_url`. This fallback isn't wired into `draft-image.sh`/`animate.sh` yet.
 
 ## Response handling
 

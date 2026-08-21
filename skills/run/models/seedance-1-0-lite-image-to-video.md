@@ -37,4 +37,4 @@ POST https://api.kie.ai/api/v1/jobs/createTask  ·  Auth: `Authorization: Bearer
 
 ## Hosting + response handling
 
-Identical to 1.0 Pro: host a durable JPEG (Blotato presigned, host-only), poll `recordInfo`, read `resultJson.resultUrls[0]` and `creditsConsumed`. kie bills only on success.
+Identical to 1.0 Pro: the raw draft URL is passed through as-is today (see 1.0 Pro's recipe for the manual JPEG re-host fallback if a 400 occurs); poll `recordInfo`, read `resultJson.resultUrls[0]` and `creditsConsumed`. kie bills only on success.
