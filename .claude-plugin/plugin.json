@@ -3,6 +3,8 @@
   "description": "Generate cost effective faceless social video via kie.ai — image draft, budget-capped animation, presets, multi-clip assembly.",
   "version": "1.0.0",
   "author": {
-    "name": "Loumna"
+    "name": "Soulobox",
+    "email": "grow@soulobox.com",
+    "url": "https://www.soulobox.com"
   }
 }
