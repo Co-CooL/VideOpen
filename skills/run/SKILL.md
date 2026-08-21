@@ -175,7 +175,7 @@ After the mp4 is saved, write a publish sidecar next to it, `{basename}.publish.
 ```
 
 Then hand off to publishing:
-- If the Blotato MCP tools are available in this agent, offer to schedule through Blotato. Confirm the target account is warmed up first (see the warmup playbook). Blotato handles per-platform formatting and scheduling. Blotato is publishing only, it does not generate.
+- If the Blotato MCP tools are available in this agent, offer to schedule through Blotato. Before scheduling, check whether the target account is new or has been dormant — a brand-new or long-inactive account posting several clips at once risks platform spam flags. If unsure, ask me rather than assuming, or check the account's recent post history through Blotato first. Blotato handles per-platform formatting and scheduling. Blotato is publishing only, it does not generate.
 - If Blotato is not connected, tell me the publish-ready file path and the sidecar so I can upload it, and remind me I can add Blotato with `claude mcp add`.
 
 ## Rules
