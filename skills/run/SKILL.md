@@ -96,6 +96,10 @@ Ship with these starters (edit them to your channel):
 - `presets/pov.md` the POV wake-up format.
 - `presets/app-watermark.md` pins your product logo as a reference so it rides on every frame.
 - `presets/brand-style.md` your channel look, colours, grade, aspect ratio.
+- `presets/before-after.md` one subject, two states, the transformation is the hook.
+- `presets/problem-solution.md` a pain shown honestly, then your product as the fix.
+- `presets/listicle.md` a ranked countdown card set, your product at number 1.
+- `presets/story.md` a single relatable cinematic beat a scroller sees themselves in.
 
 ## Prompt construction (build the prompt, don't just forward the description)
 
@@ -117,7 +121,7 @@ Full attribute vocabulary and option lists: `image-attributes.md`.
 3. Draft the still (cheap) from the synthesized prompt. nano-banana-2, or gpt-image-2-text-to-image if the frame has text or a UI. Save the file and its prompt. Show me the still. Do not animate yet.
 4. Pre-animate QA gate (see below). If any check fails, stop and report. Do not spend on video.
 5. Budget gate (see below). Quote the credits, the dollars, and the remaining session budget. Wait for my explicit go.
-6. Animate the approved still. Poll, download the mp4, write the log line with the real cost, append to the ledger.
+6. Animate the approved still. If a preset is named, pass its "Motion prompt for the animate step" as `animate.sh`'s motion argument instead of the script's generic default. Poll, download the mp4, write the log line with the real cost, append to the ledger.
 7. Publish-ready hand-off (see below).
 
 ## Budget and ledger (never blow the spend)
