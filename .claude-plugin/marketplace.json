@@ -3,7 +3,7 @@
   "owner": {
     "name": "Soulobox",
     "email": "grow@soulobox.com",
-    "website": "www.soulobox.com"
+    "url": "https://www.soulobox.com"
   },
   "description": "Marketplace for the videopen plugin (cost effective faceless social video generation via kie.ai)",
   "plugins": [
