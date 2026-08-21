@@ -1,6 +1,6 @@
 # VideOpen
 
-Claude Code plugin: generate faceless social video via [kie.ai](https://kie.ai) — draft a still, get it approved, animate it (budget-capped, multi-model routing), optionally assemble multiple clips into a 1min+ video, and hand off a publish-ready file (with Blotato integration for scheduling).
+Claude Code plugin: generate faceless social video via [kie.ai](https://kie.ai) — draft a still, get it approved, animate it (budget-capped, multi-model routing), optionally assemble multiple clips into a 1min+ video, and hand off a publish-ready file.
 
 This repo is both the plugin itself and a self-hosted marketplace, so it can be installed on any Claude Code account without copying files by hand.
 
