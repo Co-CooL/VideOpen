@@ -19,9 +19,9 @@ A single cinematic, photoreal vertical moment with one clear emotional beat, rel
 
 ## Usage
 
-- "/generate using the story preset: the moment you hit publish on the thing you were scared to ship."
-- "/generate using the story preset: the first customer notification lighting up a quiet room."
-- "/generate using the story preset: closing the laptop after a long day, the work finally done."
+- "/videopen using the story preset: the moment you hit publish on the thing you were scared to ship."
+- "/videopen using the story preset: the first customer notification lighting up a quiet room."
+- "/videopen using the story preset: closing the laptop after a long day, the work finally done."
 
 ## Motion prompt for the animate step
 

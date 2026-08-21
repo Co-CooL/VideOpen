@@ -18,5 +18,5 @@ Warm cinematic color grade, soft film grain, shallow depth of field, moody natur
 
 ## Usage
 
-"/generate using the brand-style and pov presets: you wake up in the year 3000."
+"/videopen using the brand-style and pov presets: you wake up in the year 3000."
 The style fragment and the reference frames hold the look steady, so your grid looks designed, not random.

@@ -25,11 +25,11 @@ If a phone or device is in the shot, I am looking forward or toward a window, ne
 
 Give the skill a concept. It merges the locked fragment above, keeps the point of view fixed, and never drifts across the series.
 
-- "/generate using the pov preset: you wake up as a Roman senator."
-- "/generate using the pov preset: you wake up and your app ran itself overnight, phone on the nightstand."
-- "/generate using the pov preset: you are a barista and the morning rush just hit."
-- "/generate using the pov preset: you find a hidden door behind your bookshelf."
-- "/generate using the pov preset: you are holding the keys to your first apartment."
+- "/videopen using the pov preset: you wake up as a Roman senator."
+- "/videopen using the pov preset: you wake up and your app ran itself overnight, phone on the nightstand."
+- "/videopen using the pov preset: you are a barista and the morning rush just hit."
+- "/videopen using the pov preset: you find a hidden door behind your bookshelf."
+- "/videopen using the pov preset: you are holding the keys to your first apartment."
 
 ## Motion prompt for the animate step
 

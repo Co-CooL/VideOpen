@@ -17,7 +17,7 @@ Place the provided brand logo as a small, tasteful watermark in a lower corner. 
 ## Usage
 
 Combine with a format preset:
-"/generate using the pov and app-watermark presets: you wake up as a caveman."
+"/videopen using the pov and app-watermark presets: you wake up as a caveman."
 Every clip then carries your logo. When one pops, that is millions of impressions for your product.
 
 ## Note

@@ -23,9 +23,9 @@ Single frame, no morph. Make two stills in the same style, the before and the af
 
 ## Usage
 
-- "/generate using the before-after preset: a cluttered desk, then the same desk clean and minimal."
-- "/generate using the before-after preset: a blank landing page, then a finished, polished one."
-- "/generate using the before-after preset: a wilted plant, then the same plant lush and green."
+- "/videopen using the before-after preset: a cluttered desk, then the same desk clean and minimal."
+- "/videopen using the before-after preset: a blank landing page, then a finished, polished one."
+- "/videopen using the before-after preset: a wilted plant, then the same plant lush and green."
 
 ## Motion prompt for the animate step
 
