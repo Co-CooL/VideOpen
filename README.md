@@ -15,7 +15,7 @@ This repo is both the plugin itself and a self-hosted marketplace, so it can be 
 Then invoke it with:
 
 ```
-/videopen:videopen
+/videopen:run
 ```
 
 or describe what you want in plain language ("generate a video where...", "animate this image").
@@ -27,10 +27,10 @@ or describe what you want in plain language ("generate a video where...", "anima
 
 ## What's inside
 
-- `skills/videopen/SKILL.md` — the skill instructions (workflow, budget/QA gates, model routing, presets, publish hand-off).
-- `skills/videopen/*.sh` — the kie.ai API scripts (draft image, animate, check balance, stitch clips together).
-- `skills/videopen/models/` — per-model request recipes (Seedance 1.0/2.5, Wan, Veo, Kling).
-- `skills/videopen/presets/` — reusable style presets (pov, before-after, brand-style, listicle, problem-solution, story, app-watermark).
+- `skills/run/SKILL.md` — the skill instructions (workflow, budget/QA gates, model routing, presets, publish hand-off).
+- `skills/run/*.sh` — the kie.ai API scripts (draft image, animate, check balance, stitch clips together).
+- `skills/run/models/` — per-model request recipes (Seedance 1.0/2.5, Wan, Veo, Kling).
+- `skills/run/presets/` — reusable style presets (pov, before-after, brand-style, listicle, problem-solution, story, app-watermark).
 
 ## Updating
 

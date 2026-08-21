@@ -1,10 +1,10 @@
 ---
-name: videopen
-description: Generate faceless video content consistently. Draft a still, run a pre-animate quality check, then animate the approved still through kie.ai, routing to the most cost-efficient model for the request. Enforces a running spend cap with a cost ledger, applies reusable style and character presets so a whole channel stays consistent, and outputs a publish-ready clip that hands off to Blotato for scheduling. Triggers on /videopen, generate image, generate video, make a POV clip, animate this.
+name: run
+description: Generate faceless video content consistently. Draft a still, run a pre-animate quality check, then animate the approved still through kie.ai, routing to the most cost-efficient model for the request. Enforces a running spend cap with a cost ledger, applies reusable style and character presets so a whole channel stays consistent, and outputs a publish-ready clip that hands off to Blotato for scheduling. Triggers on /videopen:run, generate image, generate video, make a POV clip, animate this.
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 
-# /videopen
+# /videopen:run
 
 Make faceless video content, keep a channel visually consistent, and never blow the budget. Draft a still, check it before you spend on animation, then animate only the still you approve. Output lands publish-ready.
 
@@ -20,7 +20,7 @@ Built for vertical social video (9:16), with a running budget ceiling, reusable 
 
      > 👋 Welcome! Here's how it works:
      >
-     > Through the /videopen skill, you describe the video you want to Claude*, and it handles the whole creation pipeline for you, from drawing the still image to a publish-ready video. It first draws an image, you approve it, then it animates it into a video, picking from several video engines depending on the style, quality, and budget you want. You can use a preset and ask for changes, the video gets redone until it works for you. You can also make a longer video (1 min+) out of several clips.
+     > Through the /videopen:run skill, you describe the video you want to Claude*, and it handles the whole creation pipeline for you, from drawing the still image to a publish-ready video. It first draws an image, you approve it, then it animates it into a video, picking from several video engines depending on the style, quality, and budget you want. You can use a preset and ask for changes, the video gets redone until it works for you. You can also make a longer video (1 min+) out of several clips.
      >
      > (* works with Claude Code only)
 
@@ -90,7 +90,7 @@ A preset is a saved style so every clip in a series looks like it came from the 
 - the aspect ratio and resolution,
 - pinned reference images in `generations/refs/` (a character sheet, your app logo, a watermark).
 
-Invoke with a preset: "/videopen using the pov preset: you wake up as a Roman senator." Load the preset, merge its locked fragment and its refs into the prompt, and never drift from them across the series.
+Invoke with a preset: "/videopen:run using the pov preset: you wake up as a Roman senator." Load the preset, merge its locked fragment and its refs into the prompt, and never drift from them across the series.
 
 Ship with these starters (edit them to your channel):
 - `presets/pov.md` the POV wake-up format.

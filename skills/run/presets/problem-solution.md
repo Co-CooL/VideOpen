@@ -25,9 +25,9 @@ Single frame, no morph. Make the problem still and the solution still separately
 
 ## Usage
 
-- "/videopen using the problem-solution preset: 20 browser tabs of scattered notes, then one clean dashboard."
-- "/videopen using the problem-solution preset: a cold dark gym at 5am, then the same person mid workout, energized."
-- "/videopen using the problem-solution preset: a messy inbox at 3am, then inbox zero at sunrise."
+- "/videopen:run using the problem-solution preset: 20 browser tabs of scattered notes, then one clean dashboard."
+- "/videopen:run using the problem-solution preset: a cold dark gym at 5am, then the same person mid workout, energized."
+- "/videopen:run using the problem-solution preset: a messy inbox at 3am, then inbox zero at sunrise."
 
 ## Motion prompt for the animate step
 

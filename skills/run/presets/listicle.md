@@ -22,9 +22,9 @@ A clean, cinematic vertical card in a consistent style across the whole set. Eac
 
 ## Usage
 
-- "/videopen using the listicle preset: 5 tools for faceless video, my product at number 1. Card 3 of 5."
-- "/videopen using the listicle preset: 5 morning habits, card 1 of 5."
-- "/videopen using the listicle preset: 5 apps every founder needs, my product at number 1. Card 5 of 5."
+- "/videopen:run using the listicle preset: 5 tools for faceless video, my product at number 1. Card 3 of 5."
+- "/videopen:run using the listicle preset: 5 morning habits, card 1 of 5."
+- "/videopen:run using the listicle preset: 5 apps every founder needs, my product at number 1. Card 5 of 5."
 
 ## Motion prompt for the animate step
 

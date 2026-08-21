@@ -1,12 +1,12 @@
-# /videopen skill (faceless video, image then animate)
+# /videopen:run skill (faceless video, image then animate)
 
 A Claude skill that makes faceless video content cheaply: draft a still on a cheap image model, then animate the one you approve through kie.ai. Quotes the cost before any paid video, enforces a 1080p publishable floor, and files every output plus its prompt in one flat folder.
 
 ## Install
 
-1. Drop the `videopen/` folder into `.claude/skills/` in your Claude Code workspace.
+1. Drop the `run/` folder into `.claude/skills/` in your Claude Code workspace.
 2. Copy `.env.example` to `.env` and paste your kie.ai key (from kie.ai/api-key). fal.ai and WaveSpeed keys are optional fallbacks. Optionally set `GENERATIONS_DIR`; it defaults to `~/faceless/generations`.
-3. Start Claude Code and type `/videopen` or "make me a POV clip."
+3. Start Claude Code and type `/videopen:run` or "make me a POV clip."
 
 ## How it works
 
