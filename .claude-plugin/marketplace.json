@@ -1,17 +1,19 @@
 {
   "name": "videopen",
   "owner": {
-    "name": "Loumna"
+    "name": "Soulobox",
+    "email": "grow@soulobox.com",
+    "website": "www.soulobox.com"
   },
-  "description": "Marketplace for the videopen plugin (faceless social video generation via kie.ai)",
+  "description": "Marketplace for the videopen plugin (cost effective faceless social video generation via kie.ai)",
   "plugins": [
     {
       "name": "videopen",
       "source": "./",
-      "description": "Generate faceless social video via kie.ai — image draft, budget-capped animation, presets, multi-clip assembly, Blotato publish hand-off.",
+      "description": "Generate faceless social video via kie.ai — image draft, budget-capped animation, presets, multi-clip assembly",
       "version": "1.0.0",
       "author": {
-        "name": "Loumna"
+        "name": "Soulobox"
       }
     }
   ]
