@@ -13,11 +13,12 @@ This repo is both the plugin itself and a self-hosted marketplace, so it install
 ## How it works
 
 1. Describe the video you want, with or without a specific style.
-2. A still image is generated (the most cost-effective format) and presented for your approval — nothing gets animated until you review it.
-3. Check that the image looks right (framing, aspect ratio, no artifacts). If it doesn't fit, it's redrafted at no animation cost.
-4. The animation cost is quoted (credits + $), and nothing runs without your explicit go.
-5. The approved still is animated into a video with the engine best suited to your request.
-6. You get a publication-ready video, with a caption and hashtags prepared if needed.
+2. Claude builds the actual image prompt from your description — it asks a compact style question (type, mood, lighting, color) plus an optional round for extra detail (composition, effects, camera angle, lens, medium, art movement, material — set what you want, skip the rest), then synthesizes a proper prompt instead of just forwarding your sentence.
+3. A still image is generated (the most cost-effective format) and presented for your approval — nothing gets animated until you review it.
+4. Check that the image looks right (framing, aspect ratio, no artifacts). If it doesn't fit, it's redrafted at no animation cost.
+5. The animation cost is quoted (credits + $), and nothing runs without your explicit go.
+6. The approved still is animated into a video with the engine best suited to your request.
+7. You get a publication-ready video, with a caption and hashtags prepared if needed.
 
 > ⚠️ Your kie.ai key lives in a local `.env` file next to the skill, gitignored and never committed. On Claude Code web sessions the container is ephemeral, so you'll be asked for it again at the start of every new session.
 
@@ -51,6 +52,7 @@ Ready-to-use presets to keep a consistent style across a whole series: `pov`, `b
 
 ## Features
 
+- **Prompt construction.** Your description isn't forwarded to kie.ai as-is — the skill asks a compact style question plus an optional detail round, then builds a proper image prompt from your description and picks. See "How it works" above.
 - **Image → video.** A still is generated first (cheap), approved by you, then animated — never the reverse.
 - **Multiple video engines** (Seedance, Wan, Veo, Kling), with different durations and price points. Defaults to the most cost-efficient option, but asks when style, quality, or runtime calls for a real choice.
 - **Reusable presets** to keep visual branding consistent across a series (character, style, app watermark, etc.) — see the list above.
@@ -70,7 +72,8 @@ Every image or video uses credits (a few cents each) — see [kie.ai/billing](ht
 
 ## What's inside
 
-- `skills/run/SKILL.md` — the skill instructions (workflow, budget/QA gates, model routing, presets, publish hand-off).
+- `skills/run/SKILL.md` — the skill instructions (workflow, prompt construction, budget/QA gates, model routing, presets, publish hand-off).
+- `skills/run/image-attributes.md` — the full vocabulary (type/style, mood, lighting, color, and the optional detail categories) used to build image prompts.
 - `skills/run/*.sh` — the kie.ai API scripts (draft image, animate, check balance, stitch clips together).
 - `skills/run/models/` — per-model request recipes (Seedance 1.0/2.5, Wan, Veo, Kling).
 - `skills/run/presets/` — reusable style presets (pov, before-after, brand-style, listicle, problem-solution, story, app-watermark).

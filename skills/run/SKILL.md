@@ -1,6 +1,6 @@
 ---
 name: run
-description: Generate faceless video content consistently. Draft a still, run a pre-animate quality check, then animate the approved still through kie.ai, routing to the most cost-efficient model for the request. Enforces a running spend cap with a cost ledger, applies reusable style and character presets so a whole channel stays consistent, and outputs a publish-ready clip that hands off to Blotato for scheduling. Triggers on /videopen:run, generate image, generate video, make a POV clip, animate this.
+description: Generate faceless video content consistently. Builds a proper image-generation prompt from your description instead of forwarding it as-is, draft a still, run a pre-animate quality check, then animate the approved still through kie.ai, routing to the most cost-efficient model for the request. Enforces a running spend cap with a cost ledger, applies reusable style and character presets so a whole channel stays consistent, and outputs a publish-ready clip that hands off to Blotato for scheduling. Triggers on /videopen:run, generate image, generate video, make a POV clip, animate this.
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 
@@ -97,14 +97,28 @@ Ship with these starters (edit them to your channel):
 - `presets/app-watermark.md` pins your product logo as a reference so it rides on every frame.
 - `presets/brand-style.md` your channel look, colours, grade, aspect ratio.
 
+## Prompt construction (build the prompt, don't just forward the description)
+
+Never send my raw sentence straight to the image model as the prompt. Build the actual prompt yourself, every time — preset or no preset:
+
+1. **Content.** Pull Subject+Action, Environment/Background, and (if a person/character is in frame) appearance/wardrobe from what I already said. Only ask if something is genuinely missing or ambiguous — don't interrogate me for details I already gave.
+2. **Look.** Ask one compact question covering Type/Style, Mood, Lighting, and Color palette. Offer a short sample from each (full vocabulary in `image-attributes.md`), and let me answer in my own words for any of them.
+3. **Optional.** Ask, as one message, which (if any) of these 8 categories I want to set: Detail level, Composition, Effects, Camera angle, Lens/depth of field, Medium, Movement, Material/texture. Whatever I skip stays out of the prompt entirely — never fill it with a silent default.
+4. **Synthesize** the final prompt: preset's locked fragment + refs (if a preset is named) → my description → selected Look answers → any selected Optional answers. This merges, it does not replace — a preset plus a Type/Style pick like "cartoon" both apply, even though the preset already implies a look.
+5. If a pick conflicts with something the preset explicitly locks (rare — presets usually lock character/setting, not medium), say so plainly and ask which should win. Don't silently drop either one.
+6. Feed the synthesized prompt into the draft step below — this only changes how the prompt gets built, not the draft/approve/animate flow.
+
+Full attribute vocabulary and option lists: `image-attributes.md`.
+
 ## The workflow
 
 1. Load preset (if named). Merge its locked fragment, aspect ratio, and refs.
-2. Draft the still (cheap). nano-banana-2, or gpt-image-2-text-to-image if the frame has text or a UI. Save the file and its prompt. Show me the still. Do not animate yet.
-3. Pre-animate QA gate (see below). If any check fails, stop and report. Do not spend on video.
-4. Budget gate (see below). Quote the credits, the dollars, and the remaining session budget. Wait for my explicit go.
-5. Animate the approved still. Poll, download the mp4, write the log line with the real cost, append to the ledger.
-6. Publish-ready hand-off (see below).
+2. Build the prompt (see "Prompt construction" above): Content, then the Look question, then the Optional question, then synthesize.
+3. Draft the still (cheap) from the synthesized prompt. nano-banana-2, or gpt-image-2-text-to-image if the frame has text or a UI. Save the file and its prompt. Show me the still. Do not animate yet.
+4. Pre-animate QA gate (see below). If any check fails, stop and report. Do not spend on video.
+5. Budget gate (see below). Quote the credits, the dollars, and the remaining session budget. Wait for my explicit go.
+6. Animate the approved still. Poll, download the mp4, write the log line with the real cost, append to the ledger.
+7. Publish-ready hand-off (see below).
 
 ## Budget and ledger (never blow the spend)
 
@@ -167,6 +181,7 @@ Then hand off to publishing:
 ## Rules
 
 - Enforce the budget gate and the QA gate before any paid video. No exceptions.
+- Never send my raw description straight to the image model. Always run it through prompt construction first (see above).
 - Draft on a cheap image model first. Only animate a still I approved.
 - Never describe a logo, face, or product UI in words. Pass the real file as a reference (Seedance 1.0 takes image_url as a single string), or via a preset. If it is missing, stop and ask.
 - Run generations one at a time. kie.ai allows 20 new requests per 10 seconds, so serialize and poll patiently.

@@ -10,6 +10,7 @@ A Claude skill that makes faceless video content cheaply: draft a still on a che
 
 ## How it works
 
+- Step 0, build the prompt: your description isn't forwarded as-is. The skill asks a compact style question (type, mood, lighting, color) plus an optional round (detail, composition, effects, camera, lens, medium, movement, material — set what you want, skip the rest), then synthesizes the real image prompt from your description plus your picks. See `image-attributes.md` for the full vocabulary.
 - Step 1, draft the still: cheap image model (Nano Banana 2, or GPT Image 2 if there is text or an app UI in frame). You review before anything is animated. The final still is 1080x1920, because the clip inherits the still's dimensions.
 - Step 2, animate: the approved still goes to Seedance 1.0 Pro image-to-video on kie.ai at 1080p. The skill quotes the credit and dollar cost and waits for your go. Then it polls, downloads the mp4, and logs the prompt and the real cost.
 
