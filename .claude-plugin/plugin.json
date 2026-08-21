@@ -1,0 +1,8 @@
+{
+  "name": "videopen",
+  "description": "Generate faceless social video via kie.ai — image draft, budget-capped animation, presets, multi-clip assembly, Blotato publish hand-off.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Loumna"
+  }
+}
